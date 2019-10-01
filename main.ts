@@ -1,4 +1,5 @@
 import { app, BrowserWindow, screen } from 'electron';
+import { AppWindow } from './srcElectron/app-window';
 import * as path from 'path';
 import * as url from 'url';
 
@@ -12,15 +13,7 @@ function createWindow() {
   const size = electronScreen.getPrimaryDisplay().workAreaSize;
 
   // Create the browser window.
-  win = new BrowserWindow({
-    x: 0,
-    y: 0,
-    width: size.width,
-    height: size.height,
-    webPreferences: {
-      nodeIntegration: true,
-    },
-  });
+  win = new AppWindow();
 
   if (serve) {
     require('electron-reload')(__dirname, {
